@@ -70,7 +70,13 @@ public class FacebookSignUp {
 		driver.findElement(By.name("websubmit")).click();  //select signup button
 		
 		//able to get the url of the second page only after interacting with the page2 element
-		driver.findElement(By.name("phone"));
+		//driver.findElement(By.name("phone"));
+		
+		String page1_url=driver.getCurrentUrl();
+		System.out.println("Page1 url is " +page1_url);
+		String page2_url="https://www.facebook.com/checkpoint/1501092823525282/?next=https%3A%2F%2Fwww.facebook.com%2F";
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.urlToBe(page2_url));
 		
 		System.out.println("Page url is "+driver.getCurrentUrl());
 		if(driver.getCurrentUrl().equals(facebook_HomePage))  //checks for the successful registration
